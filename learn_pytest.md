@@ -1,4 +1,5 @@
 **What is Pytest?**
+
 Pytest is a testing framework for Python.
 - It lets you write small tests and scale them to complex functional tests.
 - Solves the problem of manually checking your code. If your code changes, tests tell you immediately if something broke.
@@ -11,6 +12,7 @@ pytest --version
 ```
 
 **Naming Convention**
+
 Python has naming convention for pytest to discover tests:
 - Test files start with test_ or end with _test.py
 - Test functions start with test_.
@@ -38,6 +40,7 @@ Problem solved: Automates verification instead of manual checking.
 So, problem solved! Automates verification instead of manual checking.
 
 **Using Fixtures**
+
 Problem: Often we need to set-up some data or resources before testing. Doing it in every test is repetitive.
 Solution: `@pytest.fixture`
 ```python
@@ -61,6 +64,7 @@ Explanation:
 - Solves repetitive setup and keeps tests clean.
 
 **Parameterized Tests**
+
 Problem: Testing the same function with multiple inputs is tedious.
 Solution: `@pytest.mark.parametrize`
 ```python
@@ -86,6 +90,7 @@ Explanation:
 - Solves problem of duplicating similar test code.
 
 **Testing for Exceptions**
+
 Problem: Functions may raise exceptions. We need to ensure they do so when expected.
 ```python
 # test_exception.py
@@ -104,6 +109,7 @@ Explanation:
 - Solves problem of silently failing or unexpected crashes.
 
 **Grouping Tests with Classes**
+
 - Useful for organizing related tests.
 - Class names must start with `Test`
 ```python
@@ -120,6 +126,7 @@ class TestMathOperations:
 Problem solved: Better organization and readability for large projects.
 
 **Using Setup & Teardown**
+
 Problem: Sometimes you need to prepare and clean resources like files or databases.
 ```python
 # test_setup_teardown.py
@@ -139,6 +146,7 @@ Explanation:
 - Solves resource management and avoids side effects between tests.
 
 **Mocking External Dependencies**
+
 Problem: External APIs or databases may be slow/unreliable for tests.
 Solution: Use `unittest.mock` to simulate them.
 ```python
@@ -160,6 +168,7 @@ Explanation:
 - Solves slow/unreliable external calls in tests.
 
 **Advanced Features**
+
 - 9a. Marking Tests
     - Group tests using `@pytest.mark` (e.g. slow, smoke).
     ```python
@@ -185,6 +194,7 @@ Explanation:
   ```
 
 **`pytest-cov`Visibility**
+
 Problem: You wrote 50 tests, but you have no idea if you actually tested that one tricky `if/else` block in your `auth.py`.
 Solution: It generates a Coverage Report. It tracks which lines of your code were executed during the tests and which were skipped.
 ```python
@@ -221,6 +231,7 @@ Why use it?
 - It can fail your CI/CD build if coverage drops below a certain percentage (e.g., 80%).
 
 **`factory_boy`Efficiency & Maintenance**
+
 Problem: In your previous example, you manually created a dictionary for the user: {"username": "admin", "role": "super-admin"}. If you add a password_hash field to your User model later, you have to go back and fix every single test that uses a user dictionary.
 
 The Solution: You define a "Factory" once. It acts as a blueprint for generating test data.
@@ -290,6 +301,7 @@ def test_user_profile_display():
 ```
 
 **`freezegun`Stability**
+
 The Problem: Testing JWT expiration is a nightmare because time is always moving. If you test that a token expires in 30 minutes, you can't exactly make the test wait 30 minutes to see if it fails.
 
 The Solution: It "freezes" the system clock at a specific moment. You can then "move" time forward manually within the test.
